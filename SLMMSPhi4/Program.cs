@@ -2,7 +2,7 @@
 using LLama;
 using LLama.Sampling;
 
-string modelPath = @"E:\QQUF\Phi-3-mini-4k-instruct-q4.gguf";
+string modelPath = @"E:\MiniLM\QQUF\Phi-3-mini-4k-instruct-q4.gguf";
 
 var parameters = new ModelParams(modelPath)
 {
