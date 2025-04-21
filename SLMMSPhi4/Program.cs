@@ -25,7 +25,10 @@ InferenceParams inferenceParams = new InferenceParams
 {
     MaxTokens = 512,
     AntiPrompts = new List<string> { "User:" },
-    SamplingPipeline = new DefaultSamplingPipeline()
+    SamplingPipeline = new DefaultSamplingPipeline
+    {
+        Temperature = 0.2f
+    }
 };
 
 if (!File.Exists(inputFilePath))
