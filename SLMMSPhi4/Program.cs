@@ -2,7 +2,7 @@
 using LLama;
 using LLama.Sampling;
 
-string modelPath = @"E:\MiniLM\QQUF\Phi-3-mini-4k-instruct-q4.gguf";
+string modelPath = @"E:\MiniLM\QQUF\Phi-3.1-mini-128k-instruct-Q4_K_M.gguf";
 string inputFilePath = @"E:\MiniLM\ocr_text.txt";  
 
 var parameters = new ModelParams(modelPath)
@@ -36,15 +36,9 @@ if (!File.Exists(inputFilePath))
 
 string rawOcrText = await File.ReadAllTextAsync(inputFilePath);
 
-string prompt = $@"Fix and complete the following OCR output and return JSON only. No need of explanation or extra words. Just return the cleaned text in JSON format.
-
-OCR: {rawOcrText}
-
-JSON Output Format:
-{{""cleaned_text"": ""<corrected version>""}}
+string prompt = $@"Fix and complete the following OCR output and return JSON only.
+text: {rawOcrText}
 ";
-
-
 
 Console.WriteLine("\n--- LLaMA Output ---\n");
 await foreach (var text in session.ChatAsync(new ChatHistory.Message(AuthorRole.User, prompt), inferenceParams))
